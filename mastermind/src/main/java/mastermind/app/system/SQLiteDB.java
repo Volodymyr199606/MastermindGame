@@ -48,7 +48,7 @@ public class SQLiteDB {
     PrintHelper.printMessage(DATA_INSERTED_MESSAGE);
   }
 
-  private void insertUserData(Connection conn, String name, String username, String city) throws Exception {
+  public void insertUserData(Connection conn, String name, String username, String city) throws Exception {
     PreparedStatement pstmt = conn.prepareStatement(INSERT_SQL);
     pstmt.setString(1, name);
     pstmt.setString(2, username);
