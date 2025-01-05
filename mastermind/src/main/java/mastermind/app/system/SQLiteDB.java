@@ -12,10 +12,20 @@ import mastermind.app.helpers.PrintHelper;
 import static mastermind.app.helpers.Constants.*;
 import static mastermind.app.helpers.Queries.*;
 
+
+/**
+ * This class handles the SQLite database operations such as connecting to the database,
+ * creating tables, inserting user data, and displaying stored users.
+ */
 public class SQLiteDB {
 
   private static final String DB_URL = "jdbc:sqlite:users.db";
 
+
+  /**
+   * Connects to the SQLite database and initializes it by creating the necessary table,
+   * inserting user data, and displaying the stored users.
+   */
   public void connectAndInitialize() {
     try {
       Connection conn = DriverManager.getConnection(DB_URL);
@@ -32,12 +42,26 @@ public class SQLiteDB {
     }
   }
 
+
+  /**
+   * Creates the users table in the database.
+   *
+   * @param conn The database connection
+   * @throws Exception If an error occurs while creating the table
+   */
   public void createTable(Connection conn) throws Exception {
     Statement stmt = conn.createStatement();
     stmt.execute(CREATE_TABLE_SQL);
     stmt.close();
   }
 
+
+  /**
+   * Prompts the user for their name, username, and city, and inserts this data into the database.
+   *
+   * @param conn The database connection
+   * @throws Exception If an error occurs while inserting the user data
+   */
   public void insertUser(Connection conn) throws Exception {
     Scanner scanner = new Scanner(System.in);
 
@@ -48,6 +72,16 @@ public class SQLiteDB {
     PrintHelper.printMessage(DATA_INSERTED_MESSAGE);
   }
 
+
+  /**
+   * Inserts the user data into the users table.
+   *
+   * @param conn The database connection
+   * @param name The user's name
+   * @param username The user's username
+   * @param city The user's city
+   * @throws Exception If an error occurs while inserting the user data
+   */
   public void insertUserData(Connection conn, String name, String username, String city) throws Exception {
     PreparedStatement pstmt = conn.prepareStatement(INSERT_SQL);
     pstmt.setString(1, name);
@@ -57,6 +91,16 @@ public class SQLiteDB {
     pstmt.close();
   }
 
+
+  /**
+   * Prompts the user for input and validates it against a specified pattern.
+   *
+   * @param scanner The scanner to read user input
+   * @param pattern The regex pattern to validate the input
+   * @param prompt The prompt message to display to the user
+   * @param errorMessage The error message to display if the input is invalid
+   * @return The validated user input
+   */
   private String getInput(Scanner scanner, String pattern, String prompt, String errorMessage) {
     Pattern compiledPattern = Pattern.compile(pattern);
     String input;
@@ -75,6 +119,13 @@ public class SQLiteDB {
     return input;
   }
 
+
+  /**
+   * Displays the stored users from the users table.
+   *
+   * @param conn The database connection
+   * @throws Exception If an error occurs while retrieving the user data
+   */
   public void displayUsers(Connection conn) throws Exception {
     Statement stmt = conn.createStatement();
     ResultSet result = stmt.executeQuery(SELECT_SQL);
