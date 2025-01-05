@@ -7,6 +7,7 @@ import java.sql.Statement;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import mastermind.app.helpers.PrintHelper;
 
 import static mastermind.app.helpers.Constants.*;
 import static mastermind.app.helpers.Queries.*;
@@ -44,7 +45,7 @@ public class SQLiteDB {
     String username = getInput(scanner, USERNAME_PATTERN, ENTER_USERNAME_PROMPT, WRONG_USERNAME_INPUT_MESSAGE);
     String city = getInput(scanner, CITY_PATTERN, ENTER_CITY_PROMPT, WRONG_CITY_INPUT_MESSAGE);
     insertUserData(conn, name, username, city);
-    System.out.println(DATA_INSERTED_MESSAGE);
+    PrintHelper.printMessage(DATA_INSERTED_MESSAGE);
   }
 
   private void insertUserData(Connection conn, String name, String username, String city) throws Exception {
@@ -61,12 +62,12 @@ public class SQLiteDB {
     String input;
     Matcher matcher;
 
-    System.out.println(prompt);
+    PrintHelper.printMessage(prompt);
     input = scanner.nextLine();
     matcher = compiledPattern.matcher(input);
     while (!matcher.matches()) {
-      System.out.println(errorMessage);
-      System.out.println(prompt);
+      PrintHelper.printMessage(errorMessage);
+      PrintHelper.printMessage(prompt);
       input = scanner.nextLine();
       matcher = compiledPattern.matcher(input);
     }
@@ -78,12 +79,12 @@ public class SQLiteDB {
     Statement stmt = conn.createStatement();
     ResultSet result = stmt.executeQuery(SELECT_SQL);
 
-    System.out.println(STORED_USERS_MESSAGE);
+    PrintHelper.printMessage(STORED_USERS_MESSAGE);
     while (result.next()) {
-      System.out.println(("ID: " + result.getInt("id") + ", Name: " + result.getString("name") +
-          ", Username: " + result.getString("username") + ", City: " + result.getString("city")));
+      PrintHelper.printMessage("ID: " + result.getInt("id") + ", Name: " + result.getString("name") +
+          ", Username: " + result.getString("username") + ", City: " + result.getString("city"));
     }
-    System.out.println("");
+    PrintHelper.printMessage("");
 
     result.close();
     stmt.close();
