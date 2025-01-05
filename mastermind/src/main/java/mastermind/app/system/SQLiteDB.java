@@ -20,7 +20,7 @@ public class SQLiteDB {
       Connection conn = DriverManager.getConnection(DB_URL);
       if (conn != null) {
         System.out.println();
-        System.out.println("Welcome to the Mastermind Game!");
+        System.out.println(WELCOME_MESSAGE2);
         createTable(conn);
         insertUser(conn);
         displayUsers(conn);
