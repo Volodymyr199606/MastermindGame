@@ -1,5 +1,6 @@
 package mastermind.app.helpers;
 
+import java.util.Random;
 import mastermind.app.config.Configuration;
 
 
@@ -18,5 +19,14 @@ public class Utils {
       }
     }
     return maxAttempts;
+  }
+
+  public static char[] generateSecretCode() {
+    Random random = new Random();
+    char[] secretCode = new char[Configuration.CODE_LENGTH];
+    for (int i = 0; i < Configuration.CODE_LENGTH; i++) {
+      secretCode[i] = (char) ('0' + random.nextInt(Configuration.MAX_DIGIT + 1));
+    }
+    return secretCode;
   }
 }
