@@ -1,5 +1,10 @@
 package mastermind.app.config;
 
+/**
+ * The Configuration class holds the configuration constants for the application.
+ * It includes constants for the code length, maximum attempts, and maximum digit.
+ * This class cannot be instantiated.
+ */
 public final class Configuration {
   public static final int CODE_LENGTH = 4;
   public static final int MAX_ATTEMPTS = 10;
