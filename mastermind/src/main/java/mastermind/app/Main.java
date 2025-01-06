@@ -10,6 +10,7 @@ public class Main {
   public static void main(String[] args) {
 
 
+    int maxAttempts = Utils.getMaxAttempts(args);
 
 
     InitDB initDB = new InitDB();
