@@ -12,25 +12,31 @@ public class RandomNumberGenerator {
   private static final String API_URL_TEMPLATE =
       "https://www.random.org/integers/?num=%d&min=0&max=7&col=1&base=10&format=plain&rnd=new";
 
-  public String generateNumber(int codeLength) throws Exception {
-    String response = fetchRandomNumberFromAPI(codeLength);
-    if (response != null) {
-      // Ensure the response contains only valid digits and has the correct length
-      StringBuilder validNumber = new StringBuilder();
-      for (char c : response.toCharArray()) {
-        if (c >= '0' && c <= '7') {
-          validNumber.append(c);
+  public String generateNumber(int codeLength) {
+    try {
+      String response = fetchRandomNumberFromAPI(codeLength);
+      if (response != null) {
+        // Ensure the response contains only valid digits and has the correct length
+        StringBuilder validNumber = new StringBuilder();
+        for (char c : response.toCharArray()) {
+          if (c >= '0' && c <= '7') {
+            validNumber.append(c);
+          }
+          if (validNumber.length() == codeLength) {
+            break;
+          }
         }
         if (validNumber.length() == codeLength) {
-          break;
+          return validNumber.toString();
         }
       }
-      if (validNumber.length() == codeLength) {
-        return validNumber.toString();
-      }
+    } catch (Exception e) {
+      System.out.println(
+          "No connection to the API, the program will generate random number locally: " + e.getMessage());
     }
 
-    return (null);
+    // Fallback to local random number generation
+    return generateLocalRandomNumber(codeLength);
   }
 
   private String fetchRandomNumberFromAPI(int codeLength) throws Exception {
@@ -53,5 +59,14 @@ public class RandomNumberGenerator {
     StringBuilder response = new StringBuilder();
     in.close();
     return response.toString().trim();
+  }
+
+  public String generateLocalRandomNumber(int codeLength) {
+    Random random = new Random();
+    StringBuilder localRandomNumber = new StringBuilder();
+    for (int i = 0; i < codeLength; i++) {
+      localRandomNumber.append(random.nextInt(8));
+    }
+    return localRandomNumber.toString();
   }
 }
