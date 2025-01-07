@@ -1,4 +1,14 @@
 package mastermind.app.controller;
 
-public class Game {
+import mastermind.app.helpers.RandomNumberGenerator;
+
+
+public class Game extends GameLogic {
+  private char[] secretCode;
+
+  public Game(int maxAttempts) {
+    super(maxAttempts);
+    setRandomNumberGenerator(new RandomNumberGenerator());
+    setMaxAttempts(maxAttempts);
+  }
 }
