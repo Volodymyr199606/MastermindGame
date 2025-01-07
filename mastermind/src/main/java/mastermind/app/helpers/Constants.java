@@ -2,8 +2,6 @@ package mastermind.app.helpers;
 
 public class Constants {
 
-
-
   // DB constants
   public static final String WELCOME_MESSAGE2 = "Welcome to the Mastermind Game!";
   public static final String ENTER_NAME_PROMPT = "Enter your name please: ";
@@ -21,8 +19,24 @@ public class Constants {
   public static final String USERNAME_PATTERN = "^[a-zA-Z0-9]{3,15}$";
   public static final String CITY_PATTERN = "^[a-zA-Z ]{2,15}$";
 
+  // Game constants
+  public static final String WELCOME_MESSAGE = "Welcome! ";
+  public static final String TRY_GUESS_MESSAGE = "Try to guess the secret code.";
+  public static final String GAME_RULES_MESSAGE =
+      "The computer will randomly select a pattern of 3 different numbers for easy lvl, 4 for medium, and 5 for hard from a total of 8 different numbers (0~7)";
+  public static final String ATTEMPTS_MESSAGE = "You have 10 attempts. I will give you feedback after every guess.";
+  public static final String ENJOY_GAME_MESSAGE = "Enjoy your game! ";
+  public static final String GAME_OVER_FAIL_MESSAGE = "The game is over! You failed to guess the secret code. ";
+  public static final String SECRET_CODE_MESSAGE = "The secret code was: ";
+
+  public static final String WRONG_INPUT_MESSAGE_3 =
+      "Wrong input! Please enter exactly 3 characters (0-7) for your guess. ";
+  public static final String WRONG_INPUT_MESSAGE_4 =
+      "Wrong input! Please enter exactly 4 characters (0-7) for your guess. ";
+  public static final String WRONG_INPUT_MESSAGE_5 =
+      "Wrong input! Please enter exactly 5 characters (0-7) for your guess. ";
+
   private Constants() {
     // Private constructor to prevent instantiation
   }
-
 }

@@ -22,6 +22,22 @@ public abstract class GameLogic {
     this.maxAttempts = maxAttempts;
   }
 
+  public int getCodeLength() {
+    return codeLength;
+  }
+
+  public void setCodeLength(int codeLength) {
+    this.codeLength = codeLength;
+  }
+
+  public String getWrongInputMessage() {
+    return wrongInputMessage;
+  }
+
+  public void setWrongInputMessage(String wrongInputMessage) {
+    this.wrongInputMessage = wrongInputMessage;
+  }
+
   public RandomNumberGenerator getRandomNumberGenerator() {
     return randomNumberGenerator;
   }
