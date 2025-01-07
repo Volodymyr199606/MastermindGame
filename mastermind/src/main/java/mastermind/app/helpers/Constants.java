@@ -26,6 +26,10 @@ public class Constants {
       "The computer will randomly select a pattern of 3 different numbers for easy lvl, 4 for medium, and 5 for hard from a total of 8 different numbers (0~7)";
   public static final String ATTEMPTS_MESSAGE = "You have 10 attempts. I will give you feedback after every guess.";
   public static final String ENJOY_GAME_MESSAGE = "Enjoy your game! ";
+  public static final String ATTEMPT_MESSAGE = "Attempt ";
+  public static final String ENTER_GUESS_MESSAGE = "Enter your guess: ";
+  public static final String GAME_OVER_QUIT_MESSAGE = "Game Over! You quit the game.";
+  public static final String CONGRATS_MESSAGE = "Congrats! You did it!";
   public static final String GAME_OVER_FAIL_MESSAGE = "The game is over! You failed to guess the secret code. ";
   public static final String SECRET_CODE_MESSAGE = "The secret code was: ";
 
@@ -35,6 +39,8 @@ public class Constants {
       "Wrong input! Please enter exactly 4 characters (0-7) for your guess. ";
   public static final String WRONG_INPUT_MESSAGE_5 =
       "Wrong input! Please enter exactly 5 characters (0-7) for your guess. ";
+  public static final String CORRECT_LOCATION_MESSAGE = "Correct location: ";
+  public static final String CORRECT_NUMBER_MESSAGE = "Correct number: ";
 
   private Constants() {
     // Private constructor to prevent instantiation

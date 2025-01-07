@@ -2,8 +2,10 @@ package mastermind.app.controller;
 
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import mastermind.app.helpers.RandomNumberGenerator;
+import mastermind.app.service.Feedback;
 
 import static mastermind.app.helpers.Constants.*;
 
@@ -40,7 +42,6 @@ public class Game extends GameLogic {
         System.out.println(GAME_OVER_FAIL_MESSAGE);
       }
       System.out.println(SECRET_CODE_MESSAGE + Arrays.toString(secretCode));
-
     }
 
     scanner.close();
@@ -69,8 +70,69 @@ public class Game extends GameLogic {
     System.out.println(ENJOY_GAME_MESSAGE);
   }
 
+  private String validateAndProcessInput(Scanner scanner, Pattern inputPattern, String input, int attempt) {
+    while (input.isEmpty() || !inputPattern.matcher(input).matches() || input.length() != getCodeLength()) {
+      if (input.equals("")) {
+        System.out.println(secretCode);
+        attempt--;
+        System.out.print(ENTER_GUESS_MESSAGE);
+        input = scanner.nextLine();
+        continue;
+      }
+      System.out.println(getWrongInputMessage());
+      System.out.print(ENTER_GUESS_MESSAGE);
+      input = scanner.nextLine();
+    }
+    return input;
+  }
+
+  public String validateInput(Scanner scanner, Pattern pattern, String input) {
+    Matcher matcher = pattern.matcher(input);
+    while (!matcher.matches()) {
+      System.out.println(getWrongInputMessage());
+      System.out.print(ENTER_GUESS_MESSAGE);
+      input = scanner.nextLine();
+      matcher = pattern.matcher(input);
+    }
+    return input;
+  }
+
   public int playGame(Scanner scanner, Pattern pattern) {
     int correctLocation = 0;
+    Pattern inputPattern = Pattern.compile("^[0-7]*{" + getCodeLength() + "}|h$");
+
+    for (int attempt = 1; attempt <= getMaxAttempts(); attempt++) {
+      System.out.println("------------");
+      System.out.println(ATTEMPT_MESSAGE + attempt);
+      System.out.print(ENTER_GUESS_MESSAGE);
+
+      String input = scanner.nextLine();
+
+      input = validateAndProcessInput(scanner, inputPattern, input, attempt);
+
+      if (input.equals("quit")) {
+        System.out.println(GAME_OVER_QUIT_MESSAGE);
+        break;
+      } else if (input.equals("h")) {
+        continue;
+      }
+
+      input = validateInput(scanner, pattern, input);
+
+      char[] guess = input.toCharArray();
+      int[] feedback = Feedback.calculateFeedback(secretCode, guess, getCodeLength());
+      correctLocation = feedback[0];
+      int correctNumber = feedback[1];
+
+      if (correctLocation == getCodeLength()) {
+        System.out.println(CONGRATS_MESSAGE);
+        break;
+      } else {
+        System.out.println(CORRECT_LOCATION_MESSAGE + correctLocation);
+        System.out.println(CORRECT_NUMBER_MESSAGE + correctNumber);
+      }
+    }
+
     return correctLocation;
   }
 }
