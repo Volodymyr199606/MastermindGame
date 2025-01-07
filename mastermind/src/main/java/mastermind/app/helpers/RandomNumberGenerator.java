@@ -46,7 +46,7 @@ public class RandomNumberGenerator {
     connection.setRequestMethod("GET");
     int responseCode = connection.getResponseCode();
 
-    if (responseCode == HttpURLConnection.HTTP_OK) { // success
+    if (responseCode == HttpURLConnection.HTTP_OK) {
       return readResponse(connection);
     } else {
       System.out.println("GET request failed. Response Code: " + responseCode);
@@ -54,9 +54,13 @@ public class RandomNumberGenerator {
     }
   }
 
-  private String readResponse(HttpURLConnection connection) throws Exception {
+  public String readResponse(HttpURLConnection connection) throws Exception {
     BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
     StringBuilder response = new StringBuilder();
+    String inputLine;
+    while ((inputLine = in.readLine()) != null) {
+      response.append(inputLine).append("\n");
+    }
     in.close();
     return response.toString().trim();
   }
