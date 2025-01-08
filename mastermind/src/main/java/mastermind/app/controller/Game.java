@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import mastermind.app.helpers.DifficultyLevel;
 import mastermind.app.helpers.RandomNumberGenerator;
 import mastermind.app.service.Feedback;
 import mastermind.app.helpers.Timer;
@@ -30,7 +31,9 @@ public class Game extends GameLogic {
     Pattern yesNoPattern = Pattern.compile("^(yes|no)$", Pattern.CASE_INSENSITIVE);
 
     while (playAgain) {
-      setCodeLength(getCodeLength());
+      DifficultyLevel difficultyLevel = new DifficultyLevel();
+      difficultyLevel.askForDifficultyLevel();
+      setCodeLength(difficultyLevel.getCodeLength());
       pattern = Pattern.compile("^[0-7]*{" + getCodeLength() + "}$");
 
       setWrongInputMessage();

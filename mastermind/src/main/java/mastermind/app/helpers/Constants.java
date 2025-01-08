@@ -47,6 +47,13 @@ public class Constants {
   public static final String CORRECT_NUMBER_MESSAGE = "Correct number: ";
   public static final String THANK_YOU_MESSAGE = "Thank you for the game";
 
+  // Difficulty level messages
+  public static final String CHOOSE_DIFFICULTY_MESSAGE = "Choose the difficulty level:";
+  public static final String EASY_LEVEL_MESSAGE = "[1] - Easy (3 digits) ";
+  public static final String MEDIUM_LEVEL_MESSAGE = "[2] - Medium (4 digits) ";
+  public static final String HARD_LEVEL_MESSAGE = "[3] - Hard (5 digits) ";
+  public static final String INVALID_CHOICE_MESSAGE = "Invalid choice. Defaulting to Medium.";
+
   private Constants() {
     // Private constructor to prevent instantiation
   }
