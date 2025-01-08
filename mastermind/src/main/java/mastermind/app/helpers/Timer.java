@@ -1,5 +1,9 @@
 package mastermind.app.helpers;
 
+/**
+ * The Timer class provides functionality to measure elapsed time between a start and stop event.
+ * It can be used to track the duration of various operations and format the elapsed time for display.
+ */
 public class Timer {
   private long startTime;
   private long endTime;
@@ -16,6 +20,11 @@ public class Timer {
     return endTime - startTime;
   }
 
+  /**
+   * Returns the formatted elapsed time as a string in the format HH:mm:ss.
+   *
+   * @return The formatted elapsed time.
+   */
   public String getFormattedElapsedTime() {
     long elapsedTime = getElapsedTime();
     long seconds = (elapsedTime / 1000) % 60;
