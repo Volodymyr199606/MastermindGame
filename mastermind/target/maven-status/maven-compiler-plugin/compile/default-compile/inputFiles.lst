@@ -1,1 +1,14 @@
 /Users/vbehma/Documents/mastermind-final/MastermindGame/mastermind/src/main/java/mastermind/app/Main.java
+/Users/vbehma/Documents/mastermind-final/MastermindGame/mastermind/src/main/java/mastermind/app/config/Configuration.java
+/Users/vbehma/Documents/mastermind-final/MastermindGame/mastermind/src/main/java/mastermind/app/controller/Game.java
+/Users/vbehma/Documents/mastermind-final/MastermindGame/mastermind/src/main/java/mastermind/app/controller/GameLogic.java
+/Users/vbehma/Documents/mastermind-final/MastermindGame/mastermind/src/main/java/mastermind/app/controller/Playable.java
+/Users/vbehma/Documents/mastermind-final/MastermindGame/mastermind/src/main/java/mastermind/app/helpers/Constants.java
+/Users/vbehma/Documents/mastermind-final/MastermindGame/mastermind/src/main/java/mastermind/app/helpers/PrintHelper.java
+/Users/vbehma/Documents/mastermind-final/MastermindGame/mastermind/src/main/java/mastermind/app/helpers/Queries.java
+/Users/vbehma/Documents/mastermind-final/MastermindGame/mastermind/src/main/java/mastermind/app/helpers/RandomNumberGenerator.java
+/Users/vbehma/Documents/mastermind-final/MastermindGame/mastermind/src/main/java/mastermind/app/helpers/Timer.java
+/Users/vbehma/Documents/mastermind-final/MastermindGame/mastermind/src/main/java/mastermind/app/helpers/Utils.java
+/Users/vbehma/Documents/mastermind-final/MastermindGame/mastermind/src/main/java/mastermind/app/service/Feedback.java
+/Users/vbehma/Documents/mastermind-final/MastermindGame/mastermind/src/main/java/mastermind/app/system/InitDB.java
+/Users/vbehma/Documents/mastermind-final/MastermindGame/mastermind/src/main/java/mastermind/app/system/SQLiteDB.java

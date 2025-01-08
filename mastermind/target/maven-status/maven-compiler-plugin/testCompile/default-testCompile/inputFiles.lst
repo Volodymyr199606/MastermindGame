@@ -1,0 +1,13 @@
+/Users/vbehma/Documents/mastermind-final/MastermindGame/mastermind/src/test/java/config/ConfigurationTest.java
+/Users/vbehma/Documents/mastermind-final/MastermindGame/mastermind/src/test/java/controller/GameLogicTest.java
+/Users/vbehma/Documents/mastermind-final/MastermindGame/mastermind/src/test/java/controller/GameTest.java
+/Users/vbehma/Documents/mastermind-final/MastermindGame/mastermind/src/test/java/controller/PlayableTest.java
+/Users/vbehma/Documents/mastermind-final/MastermindGame/mastermind/src/test/java/helpers/ConstantsTest.java
+/Users/vbehma/Documents/mastermind-final/MastermindGame/mastermind/src/test/java/helpers/PrintHelperTest.java
+/Users/vbehma/Documents/mastermind-final/MastermindGame/mastermind/src/test/java/helpers/QueriesTest.java
+/Users/vbehma/Documents/mastermind-final/MastermindGame/mastermind/src/test/java/helpers/RandomNumberGeneratorTest.java
+/Users/vbehma/Documents/mastermind-final/MastermindGame/mastermind/src/test/java/helpers/TimerTest.java
+/Users/vbehma/Documents/mastermind-final/MastermindGame/mastermind/src/test/java/helpers/UtilsTest.java
+/Users/vbehma/Documents/mastermind-final/MastermindGame/mastermind/src/test/java/service/FeedbackTest.java
+/Users/vbehma/Documents/mastermind-final/MastermindGame/mastermind/src/test/java/system/InitDBTest.java
+/Users/vbehma/Documents/mastermind-final/MastermindGame/mastermind/src/test/java/system/SQLiteDBTest.java
