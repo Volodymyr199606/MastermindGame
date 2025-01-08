@@ -30,9 +30,9 @@ public class Constants {
   public static final String ENTER_GUESS_MESSAGE = "Enter your guess: ";
   public static final String GAME_OVER_QUIT_MESSAGE = "Game Over! You quit the game.";
   public static final String CONGRATS_MESSAGE = "Congrats! You did it!";
+
   public static final String GAME_OVER_FAIL_MESSAGE = "The game is over! You failed to guess the secret code. ";
   public static final String SECRET_CODE_MESSAGE = "The secret code was: ";
-
   public static final String WRONG_INPUT_MESSAGE_3 =
       "Wrong input! Please enter exactly 3 characters (0-7) for your guess. ";
   public static final String WRONG_INPUT_MESSAGE_4 =

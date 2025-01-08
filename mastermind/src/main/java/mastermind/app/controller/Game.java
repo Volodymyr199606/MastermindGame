@@ -19,6 +19,7 @@ public class Game extends GameLogic {
     setMaxAttempts(maxAttempts);
   }
 
+  @Override
   public void play() {
     Scanner scanner = new Scanner(System.in);
     boolean playAgain = true;
@@ -42,6 +43,8 @@ public class Game extends GameLogic {
         System.out.println(GAME_OVER_FAIL_MESSAGE);
       }
       System.out.println(SECRET_CODE_MESSAGE + Arrays.toString(secretCode));
+
+      playAgain = promptPlayAgain(scanner, yesNoPattern);
     }
 
     scanner.close();
@@ -61,15 +64,6 @@ public class Game extends GameLogic {
     }
   }
 
-  public void printWelcomeMessages() {
-    System.out.println();
-    System.out.println(WELCOME_MESSAGE);
-    System.out.println(TRY_GUESS_MESSAGE);
-    System.out.println(GAME_RULES_MESSAGE);
-    System.out.println(ATTEMPTS_MESSAGE);
-    System.out.println(ENJOY_GAME_MESSAGE);
-  }
-
   private String validateAndProcessInput(Scanner scanner, Pattern inputPattern, String input, int attempt) {
     while (input.isEmpty() || !inputPattern.matcher(input).matches() || input.length() != getCodeLength()) {
       if (input.equals("")) {
@@ -86,17 +80,7 @@ public class Game extends GameLogic {
     return input;
   }
 
-  public String validateInput(Scanner scanner, Pattern pattern, String input) {
-    Matcher matcher = pattern.matcher(input);
-    while (!matcher.matches()) {
-      System.out.println(getWrongInputMessage());
-      System.out.print(ENTER_GUESS_MESSAGE);
-      input = scanner.nextLine();
-      matcher = pattern.matcher(input);
-    }
-    return input;
-  }
-
+  @Override
   public int playGame(Scanner scanner, Pattern pattern) {
     int correctLocation = 0;
     Pattern inputPattern = Pattern.compile("^[0-7]*{" + getCodeLength() + "}|h$");
@@ -134,5 +118,47 @@ public class Game extends GameLogic {
     }
 
     return correctLocation;
+  }
+
+  @Override
+  public void printWelcomeMessages() {
+    System.out.println();
+    System.out.println(WELCOME_MESSAGE);
+    System.out.println(TRY_GUESS_MESSAGE);
+    System.out.println(GAME_RULES_MESSAGE);
+    System.out.println(ATTEMPTS_MESSAGE);
+    System.out.println(ENJOY_GAME_MESSAGE);
+  }
+
+  @Override
+  public String validateInput(Scanner scanner, Pattern pattern, String input) {
+    Matcher matcher = pattern.matcher(input);
+    while (!matcher.matches()) {
+      System.out.println(getWrongInputMessage());
+      System.out.print(CONGRATS_MESSAGE);
+      input = scanner.nextLine();
+      matcher = pattern.matcher(input);
+    }
+    return input;
+  }
+
+  @Override
+  public boolean promptPlayAgain(Scanner scanner, Pattern yesNoPattern) {
+    System.out.println();
+    System.out.print("");
+    String response = scanner.nextLine();
+    Matcher yesNoMatcher = yesNoPattern.matcher(response);
+    while (!yesNoMatcher.matches()) {
+      System.out.println();
+      System.out.print("");
+      response = scanner.nextLine();
+      yesNoMatcher = yesNoPattern.matcher(response);
+    }
+
+    if (response.equalsIgnoreCase("no")) {
+      System.out.println();
+    }
+
+    return response.equalsIgnoreCase("yes");
   }
 }

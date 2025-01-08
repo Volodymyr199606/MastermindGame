@@ -3,7 +3,7 @@ package mastermind.app.controller;
 import mastermind.app.helpers.RandomNumberGenerator;
 
 
-public abstract class GameLogic {
+public abstract class GameLogic implements Playable {
   private int maxAttempts;
   private int codeLength;
   private String wrongInputMessage;
