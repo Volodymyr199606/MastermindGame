@@ -23,8 +23,10 @@ public class Feedback {
         correctNumber++;
         secretCodeMap.put(guess[i], secretCodeMap.get(guess[i]) - 1);
       }
-      correctNumber += correctLocation;
     }
+
+    correctNumber += correctLocation;
+
     if (correctNumber > 0) {
       return new int[]{correctLocation, correctNumber};
     } else {
