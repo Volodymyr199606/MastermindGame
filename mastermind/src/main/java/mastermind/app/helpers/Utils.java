@@ -34,17 +34,14 @@ public class Utils {
   }
 
   /**
-   * Generates locally a secret code for the game.
+   * Generates a secret code for the game.
    * The secret code is a random sequence of digits within the specified range.
    *
    * @return The generated secret code as an array of characters
    */
   public static char[] generateSecretCode() {
-    Random random = new Random();
-    char[] secretCode = new char[Configuration.CODE_LENGTH];
-    for (int i = 0; i < Configuration.CODE_LENGTH; i++) {
-      secretCode[i] = (char) ('0' + random.nextInt(Configuration.MAX_DIGIT + 1));
-    }
-    return secretCode;
+    RandomNumberGenerator rng = new RandomNumberGenerator();
+    String localRandomNumber = rng.generateLocalRandomNumber(Configuration.CODE_LENGTH);
+    return localRandomNumber.toCharArray();
   }
 }
