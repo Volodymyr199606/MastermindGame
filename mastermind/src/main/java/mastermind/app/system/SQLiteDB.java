@@ -1,4 +1,5 @@
 package mastermind.app.system;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -21,7 +22,6 @@ public class SQLiteDB {
 
   private static final String DB_URL = "jdbc:sqlite:users.db";
 
-
   /**
    * Connects to the SQLite database and initializes it by creating the necessary table,
    * inserting user data, and displaying the stored users.
@@ -42,7 +42,6 @@ public class SQLiteDB {
     }
   }
 
-
   /**
    * Creates the users table in the database.
    *
@@ -55,7 +54,6 @@ public class SQLiteDB {
     stmt.close();
   }
 
-
   /**
    * Prompts the user for their name, username, and city, and inserts this data into the database.
    *
@@ -66,12 +64,12 @@ public class SQLiteDB {
     Scanner scanner = new Scanner(System.in);
 
     String name = getInput(scanner, NAME_PATTERN, ENTER_NAME_PROMPT, WRONG_NAME_INPUT_MESSAGE);
+    name = name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase();
     String username = getInput(scanner, USERNAME_PATTERN, ENTER_USERNAME_PROMPT, WRONG_USERNAME_INPUT_MESSAGE);
     String city = getInput(scanner, CITY_PATTERN, ENTER_CITY_PROMPT, WRONG_CITY_INPUT_MESSAGE);
     insertUserData(conn, name, username, city);
     PrintHelper.printMessage(DATA_INSERTED_MESSAGE);
   }
-
 
   /**
    * Inserts the user data into the users table.
@@ -90,7 +88,6 @@ public class SQLiteDB {
     pstmt.executeUpdate();
     pstmt.close();
   }
-
 
   /**
    * Prompts the user for input and validates it against a specified pattern.
@@ -119,7 +116,6 @@ public class SQLiteDB {
     return input;
   }
 
-
   /**
    * Displays the stored users from the users table.
    *
@@ -132,13 +128,13 @@ public class SQLiteDB {
 
     PrintHelper.printMessage(STORED_USERS_MESSAGE);
     while (result.next()) {
-      PrintHelper.printMessage("ID: " + result.getInt("id") + ", Name: " + result.getString("name") +
-          ", Username: " + result.getString("username") + ", City: " + result.getString("city"));
+      PrintHelper.printMessage(
+          "ID: " + result.getInt("id") + ", Name: " + result.getString("name") + ", Username: " + result.getString(
+              "username") + ", City: " + result.getString("city"));
     }
     PrintHelper.printMessage("");
 
     result.close();
     stmt.close();
   }
-
 }
