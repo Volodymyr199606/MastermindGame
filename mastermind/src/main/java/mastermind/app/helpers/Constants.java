@@ -30,9 +30,11 @@ public class Constants {
   public static final String ENTER_GUESS_MESSAGE = "Enter your guess: ";
   public static final String GAME_OVER_QUIT_MESSAGE = "Game Over! You quit the game.";
   public static final String CONGRATS_MESSAGE = "Congrats! You did it!";
-
   public static final String GAME_OVER_FAIL_MESSAGE = "The game is over! You failed to guess the secret code. ";
   public static final String SECRET_CODE_MESSAGE = "The secret code was: ";
+  public static final String PLAY_AGAIN_PROMPT = "Do you want to play again? (yes/no): ";
+  public static final String WRONG_INPUT_YES_NO_MESSAGE =
+      "Wrong input! Please enter yes or no to continue or stop the game.";
   public static final String WRONG_INPUT_MESSAGE_3 =
       "Wrong input! Please enter exactly 3 characters (0-7) for your guess. ";
   public static final String WRONG_INPUT_MESSAGE_4 =
@@ -41,6 +43,7 @@ public class Constants {
       "Wrong input! Please enter exactly 5 characters (0-7) for your guess. ";
   public static final String CORRECT_LOCATION_MESSAGE = "Correct location: ";
   public static final String CORRECT_NUMBER_MESSAGE = "Correct number: ";
+  public static final String THANK_YOU_MESSAGE = "Thank you for the game";
 
   private Constants() {
     // Private constructor to prevent instantiation

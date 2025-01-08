@@ -142,21 +142,20 @@ public class Game extends GameLogic {
     return input;
   }
 
-  @Override
   public boolean promptPlayAgain(Scanner scanner, Pattern yesNoPattern) {
     System.out.println();
-    System.out.print("");
+    System.out.print(PLAY_AGAIN_PROMPT);
     String response = scanner.nextLine();
     Matcher yesNoMatcher = yesNoPattern.matcher(response);
     while (!yesNoMatcher.matches()) {
-      System.out.println();
-      System.out.print("");
+      System.out.println(WRONG_INPUT_YES_NO_MESSAGE);
+      System.out.print(PLAY_AGAIN_PROMPT);
       response = scanner.nextLine();
       yesNoMatcher = yesNoPattern.matcher(response);
     }
 
     if (response.equalsIgnoreCase("no")) {
-      System.out.println();
+      System.out.println(THANK_YOU_MESSAGE);
     }
 
     return response.equalsIgnoreCase("yes");
