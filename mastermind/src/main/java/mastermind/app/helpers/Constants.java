@@ -1,6 +1,6 @@
 package mastermind.app.helpers;
 
-public class Constants {
+public class Constants{
 
   // DB constants
   public static final String WELCOME_MESSAGE2 = "Welcome to the Mastermind Game!";
@@ -18,6 +18,9 @@ public class Constants {
   public static final String NAME_PATTERN = "^[A-Z][a-zA-Z]{1,9}$";
   public static final String USERNAME_PATTERN = "^[a-zA-Z0-9]{3,15}$";
   public static final String CITY_PATTERN = "^[a-zA-Z ]{2,15}$";
+  public static final String TIME_FOR_ATTEMPT_MESSAGE = "Time for this attempt: ";
+  public static final String TOTAL_GAME_TIME_MESSAGE = "Total game time: ";
+
 
   // Game constants
   public static final String WELCOME_MESSAGE = "Welcome! ";

@@ -6,6 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import mastermind.app.helpers.RandomNumberGenerator;
 import mastermind.app.service.Feedback;
+import mastermind.app.helpers.Timer;
 
 import static mastermind.app.helpers.Constants.*;
 
@@ -17,6 +18,8 @@ public class Game extends GameLogic {
     super(maxAttempts);
     setRandomNumberGenerator(new RandomNumberGenerator());
     setMaxAttempts(maxAttempts);
+    setGameTimer(new Timer());
+    setAttemptTimer(new Timer());
   }
 
   @Override
@@ -36,13 +39,16 @@ public class Game extends GameLogic {
 
       printWelcomeMessages();
 
+      getGameTimer().start();
       int correctLocation = playGame(scanner, pattern);
+      getGameTimer().stop();
 
       if (correctLocation != getCodeLength()) {
         System.out.println();
         System.out.println(GAME_OVER_FAIL_MESSAGE);
       }
       System.out.println(SECRET_CODE_MESSAGE + Arrays.toString(secretCode));
+      System.out.println(TOTAL_GAME_TIME_MESSAGE + getGameTimer().getFormattedElapsedTime());
 
       playAgain = promptPlayAgain(scanner, yesNoPattern);
     }
@@ -64,7 +70,7 @@ public class Game extends GameLogic {
     }
   }
 
-  public String validateAndProcessInput(Scanner scanner, Pattern inputPattern, String input, int attempt) {
+  private String validateAndProcessInput(Scanner scanner, Pattern inputPattern, String input, int attempt) {
     while (input.isEmpty() || !inputPattern.matcher(input).matches() || input.length() != getCodeLength()) {
       if (input.equals("")) {
         System.out.println(secretCode);
@@ -90,7 +96,9 @@ public class Game extends GameLogic {
       System.out.println(ATTEMPT_MESSAGE + attempt);
       System.out.print(ENTER_GUESS_MESSAGE);
 
+      getAttemptTimer().start();
       String input = scanner.nextLine();
+      getAttemptTimer().stop();
 
       input = validateAndProcessInput(scanner, inputPattern, input, attempt);
 
@@ -115,6 +123,8 @@ public class Game extends GameLogic {
         System.out.println(CORRECT_LOCATION_MESSAGE + correctLocation);
         System.out.println(CORRECT_NUMBER_MESSAGE + correctNumber);
       }
+      System.out.println(TIME_FOR_ATTEMPT_MESSAGE + getAttemptTimer().getFormattedElapsedTime());
+
     }
 
     return correctLocation;

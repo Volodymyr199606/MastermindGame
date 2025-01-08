@@ -1,6 +1,7 @@
 package mastermind.app.controller;
 
 import mastermind.app.helpers.RandomNumberGenerator;
+import mastermind.app.helpers.Timer;
 
 
 public abstract class GameLogic implements Playable {
@@ -8,10 +9,14 @@ public abstract class GameLogic implements Playable {
   private int codeLength;
   private String wrongInputMessage;
   private RandomNumberGenerator randomNumberGenerator;
+  private Timer gameTimer;
+  private Timer attemptTimer;
 
   public GameLogic(int maxAttempts) {
     this.maxAttempts = maxAttempts;
     this.randomNumberGenerator = new RandomNumberGenerator();
+    this.gameTimer = new Timer();
+    this.attemptTimer = new Timer();
   }
 
   public int getMaxAttempts() {
@@ -44,5 +49,21 @@ public abstract class GameLogic implements Playable {
 
   public void setRandomNumberGenerator(RandomNumberGenerator randomNumberGenerator) {
     this.randomNumberGenerator = randomNumberGenerator;
+  }
+
+  public Timer getGameTimer() {
+    return gameTimer;
+  }
+
+  public void setGameTimer(Timer gameTimer) {
+    this.gameTimer = gameTimer;
+  }
+
+  public Timer getAttemptTimer() {
+    return attemptTimer;
+  }
+
+  public void setAttemptTimer(Timer attemptTimer) {
+    this.attemptTimer = attemptTimer;
   }
 }
