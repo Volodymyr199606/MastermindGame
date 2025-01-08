@@ -9,12 +9,13 @@ public class Main {
 
   public static void main(String[] args) {
 
-    int maxAttempts = Utils.getMaxAttempts(args);
-    Game game = new Game(maxAttempts);
-    game.play();
-
     InitDB initDB = new InitDB();
     initDB.init();
+
+    int maxAttempts = Utils.getMaxAttempts(args);
+
+    Game game = new Game(maxAttempts);
+    game.play();
   }
 }
 

@@ -50,7 +50,7 @@ public class Game extends GameLogic {
     scanner.close();
   }
 
-  private void setWrongInputMessage() {
+  public void setWrongInputMessage() {
     switch (getCodeLength()) {
       case 3:
         setWrongInputMessage(WRONG_INPUT_MESSAGE_3);
@@ -64,7 +64,7 @@ public class Game extends GameLogic {
     }
   }
 
-  private String validateAndProcessInput(Scanner scanner, Pattern inputPattern, String input, int attempt) {
+  public String validateAndProcessInput(Scanner scanner, Pattern inputPattern, String input, int attempt) {
     while (input.isEmpty() || !inputPattern.matcher(input).matches() || input.length() != getCodeLength()) {
       if (input.equals("")) {
         System.out.println(secretCode);
