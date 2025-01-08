@@ -15,7 +15,7 @@ public class Constants{
       "Wrong input! City name must be between 2 and 15 characters and contain only letters.";
   public static final String DATA_INSERTED_MESSAGE = "Data inserted successfully.";
   public static final String STORED_USERS_MESSAGE = "\nStored Users:";
-  public static final String NAME_PATTERN = "^[A-Z][a-zA-Z]{1,9}$";
+  public static final String NAME_PATTERN = "^[a-zA-Z]{1,9}$";
   public static final String USERNAME_PATTERN = "^[a-zA-Z0-9]{3,15}$";
   public static final String CITY_PATTERN = "^[a-zA-Z ]{2,15}$";
   public static final String TIME_FOR_ATTEMPT_MESSAGE = "Time for this attempt: ";

@@ -73,7 +73,8 @@ public class RandomNumberGenerator {
         return null;
       }
     } catch (Exception e) {
-      throw new Error("Error fetching random number from API: " + e.getMessage());
+      System.out.println("Error fetching random number from API: " + e.getMessage());
+      return null;
     }
   }
 
