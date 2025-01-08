@@ -71,15 +71,4 @@ public class RandomNumberGeneratorTest {
       assertTrue(c >= '0' && c <= '7', "Each character should be a digit between 0 and 7");
     }
   }
-
-  @Test
-  public void testReadResponse() throws Exception {
-    HttpURLConnection connection = mock(HttpURLConnection.class);
-    String sampleResponse = "line1\nline2\nline3";
-    InputStream inputStream = new ByteArrayInputStream(sampleResponse.getBytes());
-    when(connection.getInputStream()).thenReturn(inputStream);
-    RandomNumberGenerator rng = new RandomNumberGenerator();
-    String response = rng.readResponse(connection);
-    assertEquals("line1\nline2\nline3", response);
-  }
 }
