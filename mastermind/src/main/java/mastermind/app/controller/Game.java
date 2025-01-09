@@ -13,9 +13,18 @@ import mastermind.app.helpers.Timer;
 import static mastermind.app.helpers.Constants.*;
 
 
+/**
+ * The Game class extends GameLogic and implements the main game loop for the Mastermind game.
+ * It handles user input, game logic, and provides feedback to the player.
+ */
 public class Game extends GameLogic {
   private char[] secretCode;
 
+  /**
+   * Constructs a Game object with the specified maximum number of attempts.
+   *
+   * @param maxAttempts the maximum number of attempts allowed in the game
+   */
   public Game(int maxAttempts) {
     super(maxAttempts);
     setRandomNumberGenerator(new RandomNumberGenerator());
@@ -25,6 +34,9 @@ public class Game extends GameLogic {
     setHintProvider(new HintProvider());
   }
 
+  /**
+   * Starts the game loop, allowing the player to play multiple rounds until they choose to quit.
+   */
   @Override
   public void play() {
     Scanner scanner = new Scanner(System.in);
@@ -62,6 +74,9 @@ public class Game extends GameLogic {
     scanner.close();
   }
 
+  /**
+   * Sets the appropriate wrong input message based on the current code length.
+   */
   public void setWrongInputMessage() {
     switch (getCodeLength()) {
       case 3:
@@ -76,6 +91,15 @@ public class Game extends GameLogic {
     }
   }
 
+  /**
+   * Validates and processes the user's input, providing hints if requested.
+   *
+   * @param scanner the Scanner object for reading user input
+   * @param inputPattern the pattern to validate the input against
+   * @param input the user's input
+   * @param attempt the current attempt number
+   * @return the validated input
+   */
   private String validateAndProcessInput(Scanner scanner, Pattern inputPattern, String input, int attempt) {
     while (input.isEmpty() || !inputPattern.matcher(input).matches() || input.length() != getCodeLength()) {
       if (input.equals("h")) {
@@ -92,6 +116,13 @@ public class Game extends GameLogic {
     return input;
   }
 
+  /**
+   * Plays a single round of the game, allowing the player to make guesses and receive feedback.
+   *
+   * @param scanner the Scanner object for reading user input
+   * @param pattern the pattern to validate the input against
+   * @return the number of correct locations in the final guess
+   */
   @Override
   public int playGame(Scanner scanner, Pattern pattern) {
     int correctLocation = 0;
@@ -131,12 +162,14 @@ public class Game extends GameLogic {
       }
       System.out.println();
       System.out.println(TIME_FOR_ATTEMPT_MESSAGE + getAttemptTimer().getFormattedElapsedTime());
-
     }
 
     return correctLocation;
   }
 
+  /**
+   * Prints the welcome messages at the start of the game.
+   */
   @Override
   public void printWelcomeMessages() {
     System.out.println();
@@ -148,6 +181,14 @@ public class Game extends GameLogic {
     System.out.println(ENJOY_GAME_MESSAGE);
   }
 
+  /**
+   * Validates the user's input against the specified pattern.
+   *
+   * @param scanner the Scanner object for reading user input
+   * @param pattern the pattern to validate the input against
+   * @param input the user's input
+   * @return the validated input
+   */
   @Override
   public String validateInput(Scanner scanner, Pattern pattern, String input) {
     Matcher matcher = pattern.matcher(input);
@@ -160,6 +201,13 @@ public class Game extends GameLogic {
     return input;
   }
 
+  /**
+   * Prompts the player to decide whether to play again.
+   *
+   * @param scanner the Scanner object for reading user input
+   * @param yesNoPattern the pattern to validate the yes/no input
+   * @return true if the player wants to play again, false otherwise
+   */
   public boolean promptPlayAgain(Scanner scanner, Pattern yesNoPattern) {
     System.out.println();
     System.out.print(PLAY_AGAIN_PROMPT);
