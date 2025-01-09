@@ -8,7 +8,11 @@
 - [Database Setup](#database-setup)
 - [Database Schema (SQLite)](#database-schema-sqlite)
 - [Dependencies](#dependencies)
-
+- - [Technologies](#technologies)
+- [Project Structure](#project-structure)
+- [Extensions](#extensions)
+- [Challenges](#challenges)
+- [TO DO](#to-do)
 
 ## Game Rules
 At the start of the game, the computer randomly selects a pattern of four different numbers from a total of 8 different numbers (0-7).
@@ -100,6 +104,7 @@ Data like the secretCode and guesses are stored in their respective classes. Thi
 <img width="1214" alt="Screenshot 2025-01-08 at 6 38 13 PM" src="https://github.com/user-attachments/assets/e939adb2-5736-4105-b8dc-8ccade326400" />
 
 
+
 - Navigate to the `target` directory where the compiled `.jar` file is located.
 - Run the Main class (which starts the game).
 - Once the program starts, follow the on-screen prompts to play the Mastermind game.
@@ -146,3 +151,93 @@ Data like the secretCode and guesses are stored in their respective classes. Thi
 [INFO]    \- org.objenesis:objenesis:jar:3.2:test
 
 ````
+# Technologies
+1. Programming Language: Java
+2. Build Tool: Maven
+3. Database: SQLite
+
+## Endpoint
+1. https://www.random.org/integers/?num=4&min=0&max=7&col=1&base=10&format=plain&rnd=new
+2. Method: GET
+3. Description: Fetches 4 random integers between 0 and 7
+
+# Project Structure
+````
+MastermindGame/
+├── idea/
+├── mastermind/
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── mastermind/
+│   │   │       ├── app/
+│   │   │       │   ├── config/
+│   │   │       │   │   └── Configuration.java
+│   │   │       │   ├── controller/
+│   │   │       │   │   ├── Game.java
+│   │   │       │   │   ├── GameLogic.java
+│   │   │       │   │   └── Playable.java
+│   │   │       │   ├── helpers/
+│   │   │       │   │   ├── Constants.java
+│   │   │       │   │   ├── DifficultyLevel.java
+│   │   │       │   │   ├── HintProvider.java
+│   │   │       │   │   ├── PrintHelper.java
+│   │   │       │   │   ├── Queries.java
+│   │   │       │   │   ├── RandomNumberGenerator.java
+│   │   │       │   │   ├── Timer.java
+│   │   │       │   │   └── Utils.java
+│   │   │       │   ├── service/
+│   │   │       │   │   └── Feedback.java
+│   │   │       │   └── system/
+│   │   │       │       ├── InitDB.java
+│   │   │       │       └── SQLiteDB.java
+│   │   │       └── Main.java
+│   └─�� test/
+│       └── java/
+│           └── mastermind/
+│               ├── app/
+│               │   ├── config/
+│               │   │   └── ConfigurationTest.java
+│               │   ├── controller/
+│               │   │   └── GameTest.java
+│               │   ├── helpers/
+│               │   │   ├── DifficultyLevelTest.java
+│               │   │   ├── HintProviderTest.java
+│               │   │   ├── PrintHelperTest.java
+│               │   │   ├── QueriesTest.java
+│               │   │   ├── RandomNumberGeneratorTest.java
+│               │   │   ├── TimerTest.java
+│               │   │   └── UtilsTest.java
+│               │   ├── service/
+│               │   │   └── FeedbackTest.java
+│               │   └── system/
+│               │       ├── InitDBTest.java
+│               │       └── SQLiteDBTest.java
+├── pom.xml
+├── .gitignore
+└── README.md
+
+````
+## Extensions
+- Hint Feature: Players can request hints during the game.
+
+- Timer: The Timer class measures the total game time and the time taken for each attempt. This adds an element of time
+tracking to the game, allowing players to see how long they took to make each guess and complete the game.
+
+- Difficulty Levels: The DifficultyLevel class allows players to choose the difficulty level of the game.
+The difficulty level determines the length of the secret code, with options for easy (3 digits), medium (4 digits), and hard (5 digits)
+
+## Challenges
+`Issue: The BufferedReader was created, but no lines were read from it, leading to an empty response string`
+
+- Fixed: Added a while loop to read each line from the BufferedReader until the end of the stream.
+Appended each line to the response StringBuilder, ensuring that the entire response content is captured.
+Trimmed the final response string to remove any trailing newline characters.
+
+- This fix ensures that the readResponse method correctly reads and returns the full response from the HttpURLConnection,
+matching the expected response format in the test.
+
+## TO DO
+- Limit the number of hints based on the difficulty level  (easy  3 hints, medium  2 hints, hard  1 hint)
+-  Extend to multi-player mode
+-  Keep track of scores
