@@ -195,7 +195,7 @@ MastermindGame/
 │   │   │       │       ├── InitDB.java
 │   │   │       │       └── SQLiteDB.java
 │   │   │       └── Main.java
-│   └─�� test/
+│   └─ test/
 │       └── java/
 │           └── mastermind/
 │               ├── app/
