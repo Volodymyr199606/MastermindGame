@@ -25,12 +25,14 @@ public class Constants {
   public static final String WELCOME_MESSAGE = "Welcome! ";
   public static final String TRY_GUESS_MESSAGE = "Try to guess the secret code.";
   public static final String GAME_RULES_MESSAGE =
-      "The computer will randomly select a pattern of 3 different numbers for easy lvl, 4 for medium, and 5 for hard from a total of 8 different numbers (0~7)";
+      "The computer will randomly select a pattern of 3 different numbers for easy lvl, 4 for medium, and 5 for hard "
+          + "from a total of 8 different numbers (0~7)";
   public static final String ATTEMPTS_MESSAGE = "You have 10 attempts. I will give you feedback after every guess.";
   public static final String ENJOY_GAME_MESSAGE = "Enjoy your game! ";
   public static final String ATTEMPT_MESSAGE = "Attempt ";
   public static final String ENTER_GUESS_MESSAGE = "Enter your guess: ";
   public static final String GAME_OVER_QUIT_MESSAGE = "Game Over! You quit the game.";
+  public static final String PRESS_H_FOR_HINT_MESSAGE = "If you need hint press 'h' ";
   public static final String CONGRATS_MESSAGE = "Congrats! You did it!";
   public static final String GAME_OVER_FAIL_MESSAGE = "The game is over! You failed to guess the secret code. ";
   public static final String SECRET_CODE_MESSAGE = "The secret code was: ";

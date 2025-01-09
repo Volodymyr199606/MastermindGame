@@ -178,6 +178,8 @@ public class Game extends GameLogic {
     System.out.println(TRY_GUESS_MESSAGE);
     System.out.println(GAME_RULES_MESSAGE);
     System.out.println(ATTEMPTS_MESSAGE);
+    System.out.println();
+    System.out.println(PRESS_H_FOR_HINT_MESSAGE);
     System.out.println(ENJOY_GAME_MESSAGE);
   }
 
