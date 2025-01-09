@@ -31,16 +31,4 @@ public class Utils {
     }
     return maxAttempts;
   }
-
-  /**
-   * Generates a secret code for the game.
-   * The secret code is a random sequence of digits within the specified range.
-   *
-   * @return The generated secret code as an array of characters
-   */
-  public static char[] generateSecretCode() {
-    RandomNumberGenerator rng = new RandomNumberGenerator();
-    String localRandomNumber = rng.generateLocalRandomNumber(Configuration.CODE_LENGTH);
-    return localRandomNumber.toCharArray();
-  }
 }

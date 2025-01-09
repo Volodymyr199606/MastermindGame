@@ -10,13 +10,21 @@ import static org.junit.jupiter.api.Assertions.*;
 public class UtilsTest {
 
   @Test
-  public void testGenerateSecretCode() {
-    char[] secretCode = Utils.generateSecretCode();
-    assertNotNull(secretCode, "Secret code should not be null");
-    assertEquals(Configuration.CODE_LENGTH, secretCode.length, "Secret code should have the correct length");
+  public void testGetMaxAttempts() {
+    String[] args = {"-t", "5"};
+    int maxAttempts = Utils.getMaxAttempts(args);
+    assertEquals(5, maxAttempts, "The maximum number of attempts should be 5");
 
-    for (char c : secretCode) {
-      assertTrue(c >= '0' && c <= '7', "Each character should be a digit between 0 and 7");
-    }
+    args = new String[]{"-t", "abc"};
+    maxAttempts = Utils.getMaxAttempts(args);
+    assertEquals(Configuration.MAX_ATTEMPTS, maxAttempts, "The maximum number of attempts should be the default value");
+
+    args = new String[]{"-t"};
+    maxAttempts = Utils.getMaxAttempts(args);
+    assertEquals(Configuration.MAX_ATTEMPTS, maxAttempts, "The maximum number of attempts should be the default value");
+
+    args = new String[]{"-t", "5", "-t", "10"};
+    maxAttempts = Utils.getMaxAttempts(args);
+    assertEquals(5, maxAttempts, "The maximum number of attempts should be 5");
   }
 }

@@ -6,9 +6,7 @@ import mastermind.app.system.InitDB;
 
 
 public class Main {
-
   public static void main(String[] args) {
-
     InitDB initDB = new InitDB();
     initDB.init();
 
