@@ -5,6 +5,7 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import mastermind.app.helpers.DifficultyLevel;
+import mastermind.app.helpers.HintProvider;
 import mastermind.app.helpers.RandomNumberGenerator;
 import mastermind.app.service.Feedback;
 import mastermind.app.helpers.Timer;
@@ -21,6 +22,7 @@ public class Game extends GameLogic {
     setMaxAttempts(maxAttempts);
     setGameTimer(new Timer());
     setAttemptTimer(new Timer());
+    setHintProvider(new HintProvider());
   }
 
   @Override
@@ -75,8 +77,8 @@ public class Game extends GameLogic {
 
   private String validateAndProcessInput(Scanner scanner, Pattern inputPattern, String input, int attempt) {
     while (input.isEmpty() || !inputPattern.matcher(input).matches() || input.length() != getCodeLength()) {
-      if (input.equals("")) {
-        System.out.println(secretCode);
+      if (input.equals("h")) {
+        System.out.println(getHintProvider().getHint(secretCode));
         attempt--;
         System.out.print(ENTER_GUESS_MESSAGE);
         input = scanner.nextLine();
