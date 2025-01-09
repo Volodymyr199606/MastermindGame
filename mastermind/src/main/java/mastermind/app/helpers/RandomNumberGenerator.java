@@ -1,10 +1,9 @@
 package mastermind.app.helpers;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
+import java.net.URL;
 import java.util.Random;
 
 
@@ -58,24 +57,37 @@ public class RandomNumberGenerator {
    * @throws Exception If an error occurs during the API call
    */
   private String fetchRandomNumberFromAPI(int codeLength) throws Exception {
-    HttpResponse<String> response;
-    try {
-      HttpClient client = HttpClient.newHttpClient();
-      String apiUrl = String.format(API_URL_TEMPLATE, codeLength);
-      URI uri = new URI(apiUrl);
-      HttpRequest request = HttpRequest.newBuilder().uri(uri).build();
+    String apiUrl = String.format(API_URL_TEMPLATE, codeLength);
+    URL url = new URL(apiUrl);
+    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+    connection.setRequestMethod("GET");
+    int responseCode = connection.getResponseCode();
 
-      response = client.send(request, HttpResponse.BodyHandlers.ofString());
-      if (response.statusCode() == HttpURLConnection.HTTP_OK) {
-        return response.body().replaceAll("\n", "");
-      } else {
-        System.out.println("GET request failed. Response Code: " + response.statusCode());
-        return null;
-      }
-    } catch (Exception e) {
-      System.out.println("Error fetching random number from API: " + e.getMessage());
+    if (responseCode == HttpURLConnection.HTTP_OK) {
+      return readResponse(connection);
+    } else {
+      System.out.println("GET request failed. Response Code: " + responseCode);
       return null;
     }
+  }
+
+  /**
+   * Reads the response from the API call.
+   *
+   * @param connection The HTTP connection to the API
+   * @return The response as a string
+   * @throws Exception If an error occurs while reading the response
+   */
+  private String readResponse(HttpURLConnection connection) throws Exception {
+    BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+    StringBuilder response = new StringBuilder();
+    String inputLine;
+
+    while ((inputLine = in.readLine()) != null) {
+      response.append(inputLine).append("\n");
+    }
+    in.close();
+    return response.toString().trim();
   }
 
   /**

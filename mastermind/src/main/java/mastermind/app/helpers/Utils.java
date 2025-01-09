@@ -1,6 +1,5 @@
 package mastermind.app.helpers;
 
-import java.util.Random;
 import mastermind.app.config.Configuration;
 
 
