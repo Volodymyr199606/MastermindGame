@@ -53,6 +53,7 @@ public class Game extends GameLogic {
         System.out.println(GAME_OVER_FAIL_MESSAGE);
       }
       System.out.println(SECRET_CODE_MESSAGE + Arrays.toString(secretCode));
+      System.out.println();
       System.out.println(TOTAL_GAME_TIME_MESSAGE + getGameTimer().getFormattedElapsedTime());
 
       playAgain = promptPlayAgain(scanner, yesNoPattern);
@@ -128,6 +129,7 @@ public class Game extends GameLogic {
         System.out.println(CORRECT_LOCATION_MESSAGE + correctLocation);
         System.out.println(CORRECT_NUMBER_MESSAGE + correctNumber);
       }
+      System.out.println();
       System.out.println(TIME_FOR_ATTEMPT_MESSAGE + getAttemptTimer().getFormattedElapsedTime());
 
     }
@@ -139,6 +141,7 @@ public class Game extends GameLogic {
   public void printWelcomeMessages() {
     System.out.println();
     System.out.println(WELCOME_MESSAGE);
+    System.out.println();
     System.out.println(TRY_GUESS_MESSAGE);
     System.out.println(GAME_RULES_MESSAGE);
     System.out.println(ATTEMPTS_MESSAGE);
@@ -160,6 +163,7 @@ public class Game extends GameLogic {
   public boolean promptPlayAgain(Scanner scanner, Pattern yesNoPattern) {
     System.out.println();
     System.out.print(PLAY_AGAIN_PROMPT);
+    System.out.println();
     String response = scanner.nextLine();
     Matcher yesNoMatcher = yesNoPattern.matcher(response);
     while (!yesNoMatcher.matches()) {

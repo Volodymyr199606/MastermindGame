@@ -35,6 +35,7 @@ public class Constants {
   public static final String GAME_OVER_FAIL_MESSAGE = "The game is over! You failed to guess the secret code. ";
   public static final String SECRET_CODE_MESSAGE = "The secret code was: ";
   public static final String PLAY_AGAIN_PROMPT = "Do you want to play again? (yes/no): ";
+
   public static final String WRONG_INPUT_YES_NO_MESSAGE =
       "Wrong input! Please enter yes or no to continue or stop the game.";
   public static final String WRONG_INPUT_MESSAGE_3 =
