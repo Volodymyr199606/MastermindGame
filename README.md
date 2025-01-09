@@ -8,7 +8,7 @@
 - [Database Setup](#database-setup)
 - [Database Schema (SQLite)](#database-schema-sqlite)
 - [Dependencies](#dependencies)
-- - [Technologies](#technologies)
+- [Technologies](#technologies)
 - [Project Structure](#project-structure)
 - [Extensions](#extensions)
 - [Challenges](#challenges)
@@ -83,25 +83,28 @@ Data like the secretCode and guesses are stored in their respective classes. Thi
  - 0 correct location” Player guesses “0 1 5 6”, game responds “3 correct numbers and 2 correct location”
 
 ## Instructions How To Build And Start The Game
-`Clone repository from GitHub`
-- git clone https://github.com/Volodymyr199606/MastermindGame
+- Clone repository from GitHub
+```
+git clone https://github.com/Volodymyr199606/MastermindGame
+```
+- Build
+ ```
+cd mastermind
+```
+```
+mvn package
+```
 
-`Create maven project`
-- mvn archetype:generate -DgroupId=mastermind.app -DartifactId=mastermind -DarchetypeArtifactId=maven-archetype-quickstart -DarchetypeVersion=1.5 -DinteractiveMode=false
+- Run
+```
+java -cp target/mastermind-1.0-SNAPSHOT.jar mastermind.app.Main
+```
 
-`Build`
-- cd mastermind
-- mvn package
+- Go to project structure and choose `17.0.5-msft 17.0.5-aarch64` poject version
 
-`Run`
-- java -cp target/mastermind-1.0-SNAPSHOT.jar mastermind.app.Main
+<img width="800" alt="Screenshot 2025-01-08 at 6 37 46 PM" src="https://github.com/user-attachments/assets/feb48589-04da-4d79-b78f-cb652a4a448a" />
 
-
-`Go to project structure and choose 17.0.5-msft 17.0.5-aarch64 poject version`
-
-<img width="1081" alt="Screenshot 2025-01-08 at 6 37 46 PM" src="https://github.com/user-attachments/assets/feb48589-04da-4d79-b78f-cb652a4a448a" />
-
-<img width="1214" alt="Screenshot 2025-01-08 at 6 38 13 PM" src="https://github.com/user-attachments/assets/e939adb2-5736-4105-b8dc-8ccade326400" />
+<img width="800" alt="Screenshot 2025-01-08 at 6 38 13 PM" src="https://github.com/user-attachments/assets/e939adb2-5736-4105-b8dc-8ccade326400" />
 
 
 
@@ -119,7 +122,11 @@ Data like the secretCode and guesses are stored in their respective classes. Thi
 
 - The application uses an SQLite database to store users information.
 
-- The database schema is provided below.
+- Here is Demo instruction
+  
+
+https://github.com/user-attachments/assets/1fff7ea1-5590-46aa-8fce-485aa86afe7f
+
 
 
 ## Database Schema SQLite
@@ -156,10 +163,6 @@ Data like the secretCode and guesses are stored in their respective classes. Thi
 2. Build Tool: Maven
 3. Database: SQLite
 
-## Endpoint
-1. https://www.random.org/integers/?num=4&min=0&max=7&col=1&base=10&format=plain&rnd=new
-2. Method: GET
-3. Description: Fetches 4 random integers between 0 and 7
 
 # Project Structure
 ````
@@ -228,7 +231,21 @@ tracking to the game, allowing players to see how long they took to make each gu
 The difficulty level determines the length of the secret code, with options for easy (3 digits), medium (4 digits), and hard (5 digits)
 
 ## Challenges
-`Issue: The BufferedReader was created, but no lines were read from it, leading to an empty response string`
+- Issue: The error indicates that the expected and actual values in the testReadResponse method do not match.
+
+<img width="800" alt="Screenshot 2025-01-07 at 9 59 04 AM" src="https://github.com/user-attachments/assets/f45a3636-0097-469a-9457-ac68283d73f9" />
+
+
+- The original method was closing the input stream without reading any data, resulting in an empty response.
+
+<img width="800" alt="Screenshot 2025-01-07 at 10 12 39 AM" src="https://github.com/user-attachments/assets/05e796bf-86d1-43d9-9a75-a854e7ef0f23" />
+
+
+- The updated method reads each line from the input stream, appends it to the StringBuilder, and then closes the input stream. This ensures that the response string contains the actual data from the input stream.
+
+<img width="800" alt="Screenshot 2025-01-07 at 10 32 07 AM" src="https://github.com/user-attachments/assets/90c0b9fc-fefd-41c6-95bb-8d4e6aeba836" />
+
+
 
 - Fixed: Added a while loop to read each line from the BufferedReader until the end of the stream.
 Appended each line to the response StringBuilder, ensuring that the entire response content is captured.
