@@ -139,10 +139,7 @@ public class Game extends GameLogic {
 
       input = validateAndProcessInput(scanner, inputPattern, input, attempt);
 
-      if (input.equals("quit")) {
-        System.out.println(GAME_OVER_QUIT_MESSAGE);
-        break;
-      } else if (input.equals("h")) {
+      if (input.equals("h")) {
         continue;
       }
 

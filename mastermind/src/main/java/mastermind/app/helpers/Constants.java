@@ -31,7 +31,6 @@ public class Constants {
   public static final String ENJOY_GAME_MESSAGE = "Enjoy your game! ";
   public static final String ATTEMPT_MESSAGE = "Attempt ";
   public static final String ENTER_GUESS_MESSAGE = "Enter your guess: ";
-  public static final String GAME_OVER_QUIT_MESSAGE = "Game Over! You quit the game.";
   public static final String PRESS_H_FOR_HINT_MESSAGE = "If you need hint press 'h' ";
   public static final String CONGRATS_MESSAGE = "Congrats! You did it!";
   public static final String GAME_OVER_FAIL_MESSAGE = "The game is over! You failed to guess the secret code. ";
