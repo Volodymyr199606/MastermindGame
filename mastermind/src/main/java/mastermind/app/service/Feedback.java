@@ -5,6 +5,15 @@ import java.util.HashMap;
 
 public class Feedback {
 
+  /**
+   * Calculates the feedback for a given guess in the Mastermind game.
+   *
+   * @param secretCode the secret code to be guessed
+   * @param guess the player's guess
+   * @param codeLength the length of the code
+   * @return an array where the first element is the number of correct digits in the correct location,
+   *         and the second element is the total number of correct digits (including correct locations)
+   */
   public static int[] calculateFeedback(char[] secretCode, char[] guess, int codeLength) {
     int correctLocation = 0;
     int correctNumber = 0;
